@@ -111,6 +111,21 @@ captions ──┘   (normalise, never persist)     └─▶ KnowledgeIndex
                                              rewrites, citations}
 ```
 
+## Download (no Python required)
+
+Prebuilt desktop builds are attached to the latest GitHub release
+(`https://github.com/karthikkb0580-cmd/Tone-Nueron-ML-/releases/latest`):
+
+- **Windows** — `ToneNeuron-windows.exe`
+- **macOS (Apple Silicon)** — `ToneNeuron-macos.zip`
+- **Linux x86_64** — `ToneNeuron-linux.zip`
+
+Each build starts the API in-process on `127.0.0.1` and opens the mascot, so there is no server to
+run and nothing to install. Index cache, models and card state live in `~/.tone-neuron`.
+
+The builds are unsigned. Windows SmartScreen shows "More info → Run anyway"; on macOS run
+`xattr -dr com.apple.quarantine ToneNeuron` once after unzipping.
+
 ## Deploying the API
 
 The API is a plain ASGI app, so any container host works (Render, Fly.io, Railway, Cloud Run,
