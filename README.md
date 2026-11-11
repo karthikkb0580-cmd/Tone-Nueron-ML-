@@ -111,6 +111,25 @@ captions ──┘   (normalise, never persist)     └─▶ KnowledgeIndex
                                              rewrites, citations}
 ```
 
+## Deploying the API
+
+The API is a plain ASGI app, so any container host works (Render, Fly.io, Railway, Cloud Run,
+ECS). The image installs only `requirements.txt`:
+
+```bash
+docker build -t tone-neuron .
+docker run -p 8000:8000 tone-neuron
+```
+
+`PORT` is honoured (defaults to 8000). The knowledge index is built on first start under
+`TONE_NEURON_ARTIFACTS_DIR` (defaults to `/data` in the image), and trained models are optional —
+without them inference falls back to the rules and hash baselines. The PySide6 mascot is a desktop
+app and is not part of this image. If a browser frontend calls the API from another origin, add
+that origin to the CORS list in `tone_neuron/api/main.py`.
+
+**Not deployable to Freebuff Sites**: that platform runs Cloudflare Workers (JavaScript/WASM only),
+and this backend is Python.
+
 ## Verified results (this environment)
 
 Run on 2026-11-11 inside the project VM: Python 3.12, NumPy 2.5.4, scikit-learn 1.9.1,
