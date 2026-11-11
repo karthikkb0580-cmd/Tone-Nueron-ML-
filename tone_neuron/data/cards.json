@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "card_jp",
+      "region": "JP",
+      "region_name": "Japan",
+      "language": "ja",
+      "character_id": "jp_sakura",
+      "greeting": "お世話になっております (osewa ni natte orimasu), then a seasonal line.",
+      "formality": "Keigo in external mail. Surname + さん for colleagues, 様 for customers.",
+      "dos": [
+        "Acknowledge receipt before asking for anything.",
+        "Pre-align proposals informally (nemawashi) before the meeting.",
+        "Give exact deadlines: date, time and time zone."
+      ],
+      "donts": [
+        "Use first names without an invitation.",
+        "Say a flat no or correct someone in a group.",
+        "Demand a decision in the room."
+      ],
+      "taboo_topics": ["War history", "Party politics", "Religion", "Income", "Family composition"],
+      "unlock_hint": "Analyse or send a message to a Japanese colleague.",
+      "caveat": "Common business norms. Individuals, teams and multinational offices vary widely."
+    },
+    {
+      "id": "card_in",
+      "region": "IN",
+      "region_name": "India",
+      "language": "hi",
+      "character_id": "in_meera",
+      "greeting": "Namaste, or 'Dear Mr Sharma' for a first contact. A short warm line comes first.",
+      "formality": "Titles + surname for seniors; 'Sir'/'Madam' where the office uses it; Ms by default.",
+      "dos": [
+        "Give the reason before the request, and follow up gently.",
+        "Route proposals through the relationship owner.",
+        "Ask about family, festivals and cricket once trust exists."
+      ],
+      "donts": [
+        "Contradict a senior in a group thread.",
+        "Treat a polite 'we will try' as a firm commitment.",
+        "Comment on someone's English."
+      ],
+      "taboo_topics": ["Caste", "Religion", "Party politics", "India-Pakistan", "Salary", "Arranged marriage"],
+      "unlock_hint": "Analyse a draft for an Indian colleague.",
+      "caveat": "India is highly diverse; state, language and company culture dominate."
+    },
+    {
+      "id": "card_de",
+      "region": "DE",
+      "region_name": "Germany",
+      "language": "de",
+      "character_id": "de_lukas",
+      "greeting": "Sehr geehrte Frau Müller for a first contact; Guten Tag once the relationship exists.",
+      "formality": "Sie until 'du' is explicitly offered. Keep academic titles in writing.",
+      "dos": [
+        "State position, evidence and the proposed fix.",
+        "Document decisions with owner, date and next step.",
+        "Arrive early; start and end on the minute."
+      ],
+      "donts": [
+        "Use hype, superlatives or motivational slogans.",
+        "Argue from rank instead of data.",
+        "Switch to a first name without an invitation."
+      ],
+      "taboo_topics": ["Nazi-era history", "War", "Party politics", "Salary", "Health", "Religion"],
+      "unlock_hint": "Analyse a draft for a German colleague.",
+      "caveat": "Start-ups, agencies and international teams often differ from this baseline."
+    },
+    {
+      "id": "card_us",
+      "region": "US",
+      "region_name": "United States",
+      "language": "en",
+      "character_id": "us_jordan",
+      "greeting": "Hi Sam, - first name, one warm sentence, then the ask.",
+      "formality": "Low. Plain language, contractions, titles only for senior external contacts.",
+      "dos": [
+        "Put the ask in the first two sentences.",
+        "Name the decision owner and the deadline.",
+        "Pair a problem with a proposed next step."
+      ],
+      "donts": [
+        "Use pointed reminders like 'per my last email'.",
+        "Wait for consensus when an owner can decide.",
+        "Comment on age, health or appearance."
+      ],
+      "taboo_topics": ["Politics", "Religion", "Salary", "Age", "Health", "Appearance", "Immigration status"],
+      "unlock_hint": "Analyse a draft for a US colleague.",
+      "caveat": "US norms vary by region, industry and company size."
+    },
+    {
+      "id": "card_uk",
+      "region": "UK",
+      "region_name": "United Kingdom",
+      "language": "en-GB",
+      "character_id": "uk_poppy",
+      "greeting": "Dear Ms Patel for a first contact, then Hi Priya once she signs off that way.",
+      "formality": "Understated and hedged, but polite. Avoid superlatives and corporate Americanisms.",
+      "dos": [
+        "Hedge clearly: 'I'm not sure that quite works, because...'",
+        "Take contested points offline.",
+        "Send materials before the meeting."
+      ],
+      "donts": [
+        "Say 'with all due respect'.",
+        "Correct someone in public, even as a joke.",
+        "Ask about salary, politics, class or health."
+      ],
+      "taboo_topics": ["Party politics", "Brexit", "Class", "Salary", "Health", "Age"],
+      "unlock_hint": "Analyse a draft for a UK colleague.",
+      "caveat": "Sector and region (London vs elsewhere) shift the tone."
+    },
+    {
+      "id": "card_cn",
+      "region": "CN",
+      "region_name": "China",
+      "language": "zh",
+      "character_id": "cn_lian",
+      "greeting": "您好 and title + surname: 王经理 or 王总.",
+      "formality": "Titles and 您 carry the relationship; face (mianzi) is the currency.",
+      "dos": [
+        "Raise problems privately, framed as a question.",
+        "Secure leadership approval before broad circulation.",
+        "Give a face-saving route to a revised position."
+      ],
+      "donts": [
+        "Say a flat no in a group.",
+        "Read a deferral as agreement.",
+        "Mention Taiwan, Tibet, Xinjiang or party politics."
+      ],
+      "taboo_topics": ["Tiananmen", "Taiwan", "Tibet", "Xinjiang", "Party politics", "Religion", "Salary"],
+      "unlock_hint": "Analyse a draft for a Chinese colleague.",
+      "caveat": "Generational and regional differences inside China are large."
+    },
+    {
+      "id": "card_br",
+      "region": "BR",
+      "region_name": "Brazil",
+      "language": "pt",
+      "character_id": "br_ana",
+      "greeting": "Olá, Ana, tudo bem? - warm, first-name, with a real question.",
+      "formality": "First names with peers; senhor/senhora and titles for seniors. Mirror the other side.",
+      "dos": [
+        "Spend a line on the relationship before the ask.",
+        "Give feedback privately and warmly.",
+        "Confirm verbal agreements in writing."
+      ],
+      "donts": [
+        "Send a cold, template-like demand.",
+        "Publicly criticise a colleague.",
+        "Ask about salary or politics."
+      ],
+      "taboo_topics": ["Party politics", "Corruption", "Inequality", "Salary", "Religion", "Football insults"],
+      "unlock_hint": "Analyse a draft for a Brazilian colleague.",
+      "caveat": "São Paulo, Rio and the Nordeste differ noticeably."
+    },
+    {
+      "id": "card_ae",
+      "region": "AE",
+      "region_name": "United Arab Emirates",
+      "language": "ar",
+      "character_id": "ae_noor",
+      "greeting": "As-salaam alaikum, and greet the most senior person first.",
+      "formality": "Titles and family names (Mr Al Mansoori, Dr Haddad). Formal external register.",
+      "dos": [
+        "Invest in the relationship before expecting a decision.",
+        "Praise publicly, correct privately.",
+        "Adjust scheduling around prayer times and Ramadan."
+      ],
+      "donts": [
+        "Ask about a colleague's wife or daughters.",
+        "Offer alcohol or lunch during fasting hours.",
+        "Discuss religion or regional politics."
+      ],
+      "taboo_topics": ["Religion", "Politics", "Israel-Palestine", "Alcohol", "Female relatives"],
+      "unlock_hint": "Analyse a draft for a Gulf colleague.",
+      "caveat": "Emirati, expatriate and free-zone offices differ substantially."
+    }
+  ]
+}
