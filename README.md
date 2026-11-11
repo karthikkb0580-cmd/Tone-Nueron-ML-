@@ -116,14 +116,20 @@ captions ──┘   (normalise, never persist)     └─▶ KnowledgeIndex
 Prebuilt desktop builds are attached to the latest GitHub release
 (`https://github.com/karthikkb0580-cmd/Tone-Nueron-ML-/releases/latest`):
 
-- **Windows** — `ToneNeuron-windows.exe`
-- **macOS (Apple Silicon)** — `ToneNeuron-macos.zip`
-- **Linux x86_64** — `ToneNeuron-linux.zip`
+- **Windows** — `ToneNeuron-<version>-windows.zip` (unzip, run `ToneNeuron.exe`)
+- **macOS (Apple Silicon)** — `ToneNeuron-<version>-macos.zip`
+- **Linux x86_64** — `ToneNeuron-<version>-linux.zip`
 
-Each build starts the API in-process on `127.0.0.1` and opens the mascot, so there is no server to
-run and nothing to install. Index cache, models and card state live in `~/.tone-neuron`.
+These are folder builds, not a packed single-file executable: the app starts from its own
+directory, carries Windows file-version metadata, and does not unpack itself into a temp folder.
+That avoids the heuristic that most often gets unsigned PyInstaller one-file binaries quarantined.
+Each build starts the API in-process on `127.0.0.1` and opens the mascot, so there is nothing to
+install. Index cache, models and card state live in `~/.tone-neuron`.
 
-The builds are unsigned. Windows SmartScreen shows "More info → Run anyway"; on macOS run
+The builds are still unsigned, so Windows SmartScreen may ask for confirmation ("More info →
+Run anyway") and Defender can flag any unsigned executable. A clean pass requires an Authenticode
+certificate; false positives can be reported to Microsoft at
+`https://www.microsoft.com/en-us/wdsi/filesubmission`. On macOS, run
 `xattr -dr com.apple.quarantine ToneNeuron` once after unzipping.
 
 ## Deploying the API

@@ -1,5 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 import os
+import sys
 
 from PyInstaller.utils.hooks import collect_submodules
 
@@ -30,12 +31,14 @@ a = Analysis(
 
 pyz = PYZ(a.pure)
 
+# File-version resource is Windows-only; PyInstaller ignores it elsewhere.
+version_file = os.path.join(SPECPATH, "version_info.txt") if sys.platform == "win32" else None  # noqa: F821
+
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
+    exclude_binaries=True,
     name="ToneNeuron",
     debug=False,
     bootloader_ignore_signals=False,
@@ -47,4 +50,14 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    version=version_file,
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.datas,
+    strip=False,
+    upx=False,
+    name="ToneNeuron",
 )

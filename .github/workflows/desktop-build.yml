@@ -15,11 +15,11 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            asset: ToneNeuron-windows.exe
+            platform: windows
           - os: macos-latest
-            asset: ToneNeuron-macos.zip
+            platform: macos
           - os: ubuntu-latest
-            asset: ToneNeuron-linux.zip
+            platform: linux
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -31,7 +31,7 @@ jobs:
 
       - name: System libraries (Linux Qt)
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libegl1 libxkbcommon0 libfontconfig1 libfreetype6 libdbus-1-3 libgl1 zip
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libxkbcommon0 libfontconfig1 libfreetype6 libdbus-1-3 libgl1
 
       - name: Install build dependencies
         run: |
@@ -45,22 +45,39 @@ jobs:
         shell: bash
         run: |
           mkdir -p out
-          if [ -f dist/ToneNeuron.exe ]; then
-            cp dist/ToneNeuron.exe "out/${{ matrix.asset }}"
-          else
-            zip -9 -j "out/${{ matrix.asset }}" dist/ToneNeuron
-          fi
+          cat > dist/ToneNeuron/README.txt <<'EOF'
+          Tone Neuron desktop app
+
+          Windows:  double-click ToneNeuron.exe
+          macOS:    chmod +x ToneNeuron && ./ToneNeuron
+          Linux:    ./ToneNeuron
+
+          The API starts automatically inside the app - no Python and no server setup needed.
+          Data and logs: %USERPROFILE%\.tone-neuron (Windows) or ~/.tone-neuron (macOS/Linux).
+
+          This build is unsigned, so Windows SmartScreen may ask for confirmation:
+          choose "More info" -> "Run anyway".
+          EOF
+          python - <<'PY'
+          import os, shutil
+          version = os.environ.get("GITHUB_REF_NAME", "").lstrip("v")
+          if version in ("", "main", "master"):
+              version = "dev"
+          name = f"ToneNeuron-{version}-${{ matrix.platform }}"
+          shutil.make_archive(f"out/{name}", "zip", "dist", "ToneNeuron")
+          print("wrote", name + ".zip")
+          PY
           ls -lh out
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.asset }}
-          path: out/${{ matrix.asset }}
+          name: ToneNeuron-${{ matrix.platform }}
+          path: out/*.zip
           if-no-files-found: error
 
       - name: Attach to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: out/${{ matrix.asset }}
+          files: out/*.zip
           generate_release_notes: true
