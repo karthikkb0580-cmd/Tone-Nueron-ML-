@@ -64,8 +64,11 @@ python scripts/demo.py
 
 # 5) the desktop pet (needs a display; PySide6)
 pip install -r requirements-optional.txt      # includes PySide6-Essentials
-python -m tone_neuron.mascot.app
+python -m tone_neuron.mascot.app              # GUI
+python -m tone_neuron.mascot.app --selftest   # headless state/character check
 ```
+
+Everything also runs through one CLI: `python -m tone_neuron.cli {demo,build-index,train,serve,mascot,analyze}`.
 
 Tests: `pytest -q` (ML API, gate logic, retrieval).
 
@@ -104,6 +107,42 @@ captions ──┘   (normalise, never persist)     └─▶ KnowledgeIndex
                                              flagged_spans, reasons,
                                              rewrites, citations}
 ```
+
+## Verified results (this environment)
+
+Run on 2026-11-11 inside the project VM: Python 3.12, NumPy 2.5.4, scikit-learn 1.9.1,
+fastText 0.9.2, 2,400 synthetic samples (300 per region, 480 per tone), 600 held-out.
+
+| Task | Selected model | Accuracy | Macro-F1 | Hard subset (147/600) |
+|---|---|---|---|---|
+| A. Region inference (8 classes) | FastText supervised | 1.000 | 1.000 | 1.000 / 1.000 |
+| B. Tone + risk (5 classes) | FastText supervised | 1.000 | 1.000 | 1.000 / 1.000 |
+
+Per-region accuracy / macro-F1 and per-class precision / recall / F1 are written to
+`artifacts/models/metrics.json` (`tasks.*.best.per_region`, `tasks.*.best.per_class`).
+
+**Read these numbers carefully.** They measure *separability of the synthetic templates*, not
+real-world accuracy. The "hard subset" (dropped language/time zone, generic inboxes, diaspora
+names) still scores 1.000 because the remaining identity tokens and tone phrases separate the
+generated templates. Treat the table as a pipeline check and an upper bound; consented,
+human-annotated per-region data is required before any accuracy claim (see `docs/FAIRNESS.md`).
+
+**Transformer comparison.** `DistilBERT`/`XLM-R` training is implemented in
+`tone_neuron/ml/transformer_model.py` and enabled with `--transformer`. `torch`/`transformers` are
+not installed here, so `metrics.json` records `"status": "skipped"`; the trainer automatically
+selects the best macro-F1 across available models and writes `*_best.json` for inference.
+
+**Tests.** `22 passed` with `pytest -q`: ML contract, gate decisions (block / hint / allow /
+non-intrusive call alert) and retrieval + citations.
+
+**Desktop mascot.** The PySide6 app is complete, but this VM is headless and missing
+`libxkbcommon`, `libEGL`, `freetype` and `fontconfig`, with no root to install them, so the GUI was
+**not launched or visually verified here**. It compiles, and `--selftest` exercises every state and
+language offscreen on a normal desktop.
+
+**NumPy note.** `fasttext-wheel`'s Python `predict` breaks on NumPy 2 (`np.array(..., copy=False)`).
+The baseline calls the C++ predictor directly, which returns the same labels/probabilities without
+that conversion, so training and inference work on NumPy 1.x and 2.x.
 
 ## Using the API
 

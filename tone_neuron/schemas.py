@@ -140,6 +140,8 @@ class AnalyzeRequest(NMModel):
 # Feature 1 output                                                             #
 # --------------------------------------------------------------------------- #
 class AnalyzeResponse(NMModel):
+    analysis_id: str = ""
+    excerpt: str = ""
     region: str
     region_name: str
     confidence: float = Field(ge=0.0, le=1.0)
@@ -216,7 +218,7 @@ class CoachingRequest(NMModel):
     date: str | None = None
     target_language: str | None = None
     include_meetings: bool = True
-    clear_after: bool = False
+    clear_after: bool = True
 
 
 class CoachingTheme(NMModel):
