@@ -48,7 +48,7 @@ jobs:
           if [ -f dist/ToneNeuron.exe ]; then
             cp dist/ToneNeuron.exe "out/${{ matrix.asset }}"
           else
-            cd dist && zip -9 "../out/${{ matrix.asset }}" ToneNeuron
+            zip -9 -j "out/${{ matrix.asset }}" dist/ToneNeuron
           fi
           ls -lh out
 
