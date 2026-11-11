@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "default_character": "neuro",
+  "language_regions": {
+    "en": "US",
+    "en-US": "US",
+    "en-GB": "UK",
+    "ja": "JP",
+    "de": "DE",
+    "hi": "IN",
+    "zh": "CN",
+    "pt": "BR",
+    "pt-BR": "BR",
+    "ar": "AE"
+  },
+  "characters": [
+    {
+      "id": "neuro",
+      "name": "Neuro",
+      "kind": "default",
+      "description": "A friendly neuron: glowing soma, dendrite arms, a tiny smile. Tone Neuron's default pet.",
+      "regions": ["*"],
+      "languages": ["*"],
+      "traditional_clothing": "none - it is a neuron",
+      "greeting_expression": "bright open smile with a little spark",
+      "greeting": "Hi! I'll watch your tone before it leaves the building.",
+      "states": {
+        "idle": "🧠",
+        "alert": "⚠️",
+        "thinking": "💭",
+        "happy": "😊",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#7C9CFF",
+        "alert": "#F2A65A",
+        "thinking": "#9B8CFF",
+        "happy": "#7ED9A7",
+        "worried": "#F28B8B"
+      },
+      "sprite": "sprites/neuro.svg"
+    },
+    {
+      "id": "jp_sakura",
+      "name": "Sakura",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a spring kimono with sakura motifs. Placeholder art, swappable.",
+      "regions": ["JP"],
+      "languages": ["ja"],
+      "traditional_clothing": "kimono with sakura pattern and a soft obi",
+      "greeting_expression": "polite bow (ojigi) with a gentle closed-mouth smile",
+      "greeting": "お世話になっております。Together we'll keep it polite.",
+      "states": {
+        "idle": "🌸",
+        "alert": "😯",
+        "thinking": "🎋",
+        "happy": "😊",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#F7B7C9",
+        "alert": "#E8739B",
+        "thinking": "#C9B6F2",
+        "happy": "#9FD8B4",
+        "worried": "#E6A0A0"
+      },
+      "sprite": "sprites/jp_sakura.svg"
+    },
+    {
+      "id": "in_meera",
+      "name": "Meera",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a bright saree with a jasmine hairpin. Placeholder art, swappable.",
+      "regions": ["IN"],
+      "languages": ["hi", "en-IN"],
+      "traditional_clothing": "saree in marigold and teal with a bindi and jasmine flowers",
+      "greeting_expression": "namaste with palms together and a warm smile",
+      "greeting": "Namaste! Let's make it warm and respectful.",
+      "states": {
+        "idle": "🪷",
+        "alert": "😯",
+        "thinking": "🧵",
+        "happy": "😄",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#F2C14E",
+        "alert": "#E07A5F",
+        "thinking": "#B8A1E3",
+        "happy": "#8FD694",
+        "worried": "#E8A0A0"
+      },
+      "sprite": "sprites/in_meera.svg"
+    },
+    {
+      "id": "de_lukas",
+      "name": "Lukas",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a structured Tracht jacket with a notebook. Placeholder art, swappable.",
+      "regions": ["DE"],
+      "languages": ["de"],
+      "traditional_clothing": "dark Tracht jacket with a subtle check shirt and a wool scarf",
+      "greeting_expression": "firm handshake with direct eye contact and a small nod",
+      "greeting": "Guten Tag. Klar und freundlich - let's be precise.",
+      "states": {
+        "idle": "🥨",
+        "alert": "😮",
+        "thinking": "📐",
+        "happy": "🙂",
+        "worried": "😕"
+      },
+      "colors": {
+        "idle": "#7C9CBF",
+        "alert": "#D9822B",
+        "thinking": "#8E9BB3",
+        "happy": "#7EC8A0",
+        "worried": "#D98C8C"
+      },
+      "sprite": "sprites/de_lukas.svg"
+    },
+    {
+      "id": "us_jordan",
+      "name": "Jordan",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a varsity jacket and jeans. Placeholder art, swappable.",
+      "regions": ["US"],
+      "languages": ["en-US"],
+      "traditional_clothing": "varsity jacket over a plain tee, sneakers",
+      "greeting_expression": "relaxed grin with a quick wave",
+      "greeting": "Hey there! Let's keep it clear and kind.",
+      "states": {
+        "idle": "🛹",
+        "alert": "😲",
+        "thinking": "💡",
+        "happy": "😎",
+        "worried": "😬"
+      },
+      "colors": {
+        "idle": "#6FA8DC",
+        "alert": "#E69138",
+        "thinking": "#9C7BE0",
+        "happy": "#6FCF97",
+        "worried": "#E07A7A"
+      },
+      "sprite": "sprites/us_jordan.svg"
+    },
+    {
+      "id": "uk_poppy",
+      "name": "Poppy",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a tweed blazer with a tartan scarf and a teacup. Placeholder art.",
+      "regions": ["UK"],
+      "languages": ["en-GB"],
+      "traditional_clothing": "tweed blazer, tartan scarf, small enamel teapot pin",
+      "greeting_expression": "small polite smile with a slight nod and a raised teacup",
+      "greeting": "Lovely to meet you. Understated but honest, that's the way.",
+      "states": {
+        "idle": "🫖",
+        "alert": "😯",
+        "thinking": "☂️",
+        "happy": "🙂",
+        "worried": "😕"
+      },
+      "colors": {
+        "idle": "#8A9A5B",
+        "alert": "#C97B4A",
+        "thinking": "#9D8FB5",
+        "happy": "#84C29A",
+        "worried": "#D99A9A"
+      },
+      "sprite": "sprites/uk_poppy.svg"
+    },
+    {
+      "id": "cn_lian",
+      "name": "Lian",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a qipao with a jade pendant. Placeholder art, swappable.",
+      "regions": ["CN"],
+      "languages": ["zh"],
+      "traditional_clothing": "red qipao with gold embroidery and a jade pendant",
+      "greeting_expression": "slight bow with hands folded, calm smile",
+      "greeting": "您好! Let's protect face and keep it warm.",
+      "states": {
+        "idle": "🏮",
+        "alert": "😯",
+        "thinking": "🀄",
+        "happy": "😊",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#D64545",
+        "alert": "#E08A3C",
+        "thinking": "#A974C9",
+        "happy": "#7FC29B",
+        "worried": "#D98B8B"
+      },
+      "sprite": "sprites/cn_lian.svg"
+    },
+    {
+      "id": "br_ana",
+      "name": "Ana",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in a colourful sundress with a football scarf. Placeholder art.",
+      "regions": ["BR"],
+      "languages": ["pt"],
+      "traditional_clothing": "sundress in green and yellow with a lightweight scarf",
+      "greeting_expression": "wide smile with a warm wave and a quick hug",
+      "greeting": "Oi! Tudo bem? Vamos conversar com carinho.",
+      "states": {
+        "idle": "🌴",
+        "alert": "😮",
+        "thinking": "🎶",
+        "happy": "😄",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#3FA34D",
+        "alert": "#F2A93B",
+        "thinking": "#A57BE0",
+        "happy": "#5FCB8B",
+        "worried": "#E08A8A"
+      },
+      "sprite": "sprites/br_ana.svg"
+    },
+    {
+      "id": "ae_noor",
+      "name": "Noor",
+      "kind": "anime-human",
+      "description": "Anime-styled colleague in an abaya with gold trim and a coffee dallah. Placeholder art.",
+      "regions": ["AE"],
+      "languages": ["ar"],
+      "traditional_clothing": "black abaya with gold trim, patterned shayla, small dallah pin",
+      "greeting_expression": "right hand over the heart with a warm smile",
+      "greeting": "As-salaam alaikum. Hospitality first, business second.",
+      "states": {
+        "idle": "☕",
+        "alert": "😯",
+        "thinking": "🌙",
+        "happy": "😊",
+        "worried": "😟"
+      },
+      "colors": {
+        "idle": "#C9A227",
+        "alert": "#D9822B",
+        "thinking": "#8B7BB8",
+        "happy": "#79C2A2",
+        "worried": "#D99A9A"
+      },
+      "sprite": "sprites/ae_noor.svg"
+    }
+  ]
+}
