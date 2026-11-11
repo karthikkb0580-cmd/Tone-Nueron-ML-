@@ -219,6 +219,7 @@ class CoachingRequest(NMModel):
     target_language: str | None = None
     include_meetings: bool = True
     clear_after: bool = True
+    clear_after: bool = False
 
 
 class CoachingTheme(NMModel):

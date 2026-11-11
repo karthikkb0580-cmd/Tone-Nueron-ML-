@@ -70,6 +70,9 @@ python -m tone_neuron.mascot.app --selftest   # headless state/character check
 
 Everything also runs through one CLI: `python -m tone_neuron.cli {demo,build-index,train,serve,mascot,analyze}`.
 
+python -m tone_neuron.mascot.app
+```
+
 Tests: `pytest -q` (ML API, gate logic, retrieval).
 
 Optional extras are genuinely optional — the code degrades gracefully:
