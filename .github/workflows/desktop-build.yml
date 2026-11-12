@@ -18,7 +18,7 @@ jobs:
             platform: windows
           - os: macos-latest
             platform: macos
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             platform: linux
     runs-on: ${{ matrix.os }}
 
@@ -51,6 +51,23 @@ jobs:
 
       - name: Build
         run: pyinstaller packaging/ToneNeuron.spec --noconfirm --clean
+
+      - name: Smoke test (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:QT_QPA_PLATFORM = "offscreen"
+          $process = Start-Process -FilePath "dist/ToneNeuron/ToneNeuron.exe" `
+            -ArgumentList @("--smoke", "--smoke-out", "smoke.json") -Wait -PassThru -NoNewWindow
+          Write-Host "exit=$($process.ExitCode)"
+          if (Test-Path smoke.json) { Get-Content smoke.json } else { Write-Host "no smoke.json" }
+          if ($process.ExitCode -ne 0) { throw "smoke test failed with $($process.ExitCode)" }
+
+      - name: Smoke test (macOS/Linux)
+        if: runner.os != 'Windows'
+        run: |
+          QT_QPA_PLATFORM=offscreen ./dist/ToneNeuron/ToneNeuron --smoke --smoke-out smoke.json
+          cat smoke.json
 
       - name: Package
         shell: bash

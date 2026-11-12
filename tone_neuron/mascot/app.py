@@ -12,7 +12,7 @@ import argparse
 import os
 import sys
 
-from PySide6.QtCore import QPoint, Qt
+from PySide6.QtCore import QPoint, Qt, QTimer
 from PySide6.QtGui import QColor, QFont, QPainter, QPainterPath, QPen, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
@@ -53,6 +53,7 @@ class MascotWindow(QWidget):
         self._build_window()
         self.apply_region(self.region, announce=True)
         self.snap_to_side()
+        QTimer.singleShot(250, self.probe_backend)
 
     # -- construction ------------------------------------------------------
     def _build_window(self) -> None:
@@ -170,6 +171,28 @@ class MascotWindow(QWidget):
         self.move(x, y)
 
     # -- backend actions ---------------------------------------------------
+    def probe_backend(self) -> None:
+        """Show connection state on startup instead of failing silently on first action."""
+        timeout = self.client.timeout
+        self.client.timeout = min(timeout, 2.0)
+        try:
+            health = self.client.health()
+            entries = int(health.get("knowledge_entries") or 0)
+            self.apply_state(
+                "idle",
+                f"Connected · {entries} knowledge entries. Right-click to check a draft.",
+                "Backend ready",
+            )
+        except BackendUnavailable:
+            self.apply_state(
+                "worried",
+                f"Backend not reachable at {self.client.base_url}.\n"
+                "Details: ~/.tone-neuron/app.log",
+                "Offline",
+            )
+        finally:
+            self.client.timeout = timeout
+
     def check_draft(self) -> None:
         text, ok = QInputDialog.getMultiLineText(
             self, "Check a draft", "Paste the message you are about to send:"
